@@ -136,7 +136,7 @@ require("./filter_registry");
 promisify(exports);
 
 // Set version.
-exports.version = require("../package").version;
+exports.version = require("../package.json").version;
 
 // Expose Promise implementation.
 exports.Promise = Promise;
