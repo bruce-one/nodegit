@@ -102,10 +102,10 @@ require("./enums.js");
 
 // Import extensions
 // [Manual] extensions
-importExtension("filter_registry");
+require("./filter_registry");
 {% each %}
   {% if type != "enum" %}
-    importExtension("{{ filename }}");
+    require("./{{ filename }}");
   {% endif %}
 {% endeach %}
 /* jshint ignore:start */
