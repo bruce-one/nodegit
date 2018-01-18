@@ -91,21 +91,21 @@ var importExtension = function(name) {
 
 // Load up utils
 rawApi.Utils = {};
-require("./utils/lookup_wrapper");
-require("./utils/normalize_options");
-require("./utils/shallow_clone");
-require("./utils/normalize_fetch_options");
+require("./utils/lookup_wrapper")(module.exports);
+require("./utils/normalize_options")(module.exports);
+require("./utils/shallow_clone")(module.exports);
+require("./utils/normalize_fetch_options")(module.exports);
 
 // Load up extra types;
-require("./status_file");
-require("./enums.js");
+require("./status_file")(module.exports);
+require("./enums.js")(module.exports);
 
 // Import extensions
 // [Manual] extensions
-require("./filter_registry");
+require("./filter_registry")(module.exports);
 {% each %}
   {% if type != "enum" %}
-    require("./{{ filename }}");
+    require("./{{ filename }}")(module.exports);
   {% endif %}
 {% endeach %}
 /* jshint ignore:start */
