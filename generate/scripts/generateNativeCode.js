@@ -117,7 +117,18 @@ module.exports = function generateNativeCode() {
     // Write out single purpose templates.
     utils.writeLocalFile("../binding.gyp", beautify(templates.binding.render(enabled)), "binding.gyp");
     utils.writeFile(path.join(tempSrcDirPath, "nodegit.cc"), templates.nodegitCC.render(enabled), "nodegit.cc");
-    utils.writeLocalFile("../lib/nodegit.js", beautify(templates.nodegitJS.render(enabled)), "nodegit.js");
+    const nodegitjs = beautify(templates.nodegitJS.render(enabled))
+    const nodegitjsOut = nodegitjs.split('\n').filter( (x) => {
+      const res = /require\(['"](\.\/[^'"]+)['"]\)/g.exec(x)
+      if(!res) return true
+      try {
+        require.resolve(`../../lib/${res[1].replace(/^\.\//, '')}`)
+        return true
+      } catch (e) {
+        return false
+      }
+    }).join('\n')
+    utils.writeLocalFile("../lib/nodegit.js", nodegitjsOut, "nodegit.js");
     // Write out all the classes.
     enabled.forEach(function(idef) {
       if (idef.type && idef.type != "enum") {
