@@ -1,7 +1,7 @@
 {
   "name": "@bryce-gibson/nodegit",
   "description": "Node.js libgit2 asynchronous native bindings",
-  "version": "0.20.4",
+  "version": "0.20.5",
   "homepage": "http://nodegit.org",
   "keywords": [
     "libgit2",
