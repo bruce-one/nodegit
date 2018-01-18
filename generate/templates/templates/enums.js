@@ -1,4 +1,4 @@
-var NodeGit = require("../");
+module.exports = function(NodeGit) {
 NodeGit.Enums = {};
 
 {% each . as enumerable %}
@@ -12,3 +12,4 @@ NodeGit.Enums = {};
     {% endif %}
   {% endif %}
 {% endeach %}
+}
