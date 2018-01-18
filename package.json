@@ -62,7 +62,8 @@
   "binary": {
     "module_name": "nodegit",
     "module_path": "./build/Release/",
-    "host": "https://nodegit.s3.amazonaws.com/nodegit/nodegit/"
+    "host": "https://nodegit.s3.amazonaws.com/nodegit/nodegit/",
+    "package_name": "{module_name}-v0.20.3-{node_abi}-{platform}-{arch}.tar.gz"
   },
   "scripts": {
     "babel": "babel --presets es2015 -d ./dist ./lib",
